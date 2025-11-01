@@ -73,23 +73,7 @@ I&apos;m currently expanding my skill set into **Artificial Intelligence and Mac
    - Features: Event creation, participant invites, money pooling, built-in games, and refereed competitions.
    - Technologies: Next.js, Firebase, Node.js, Stripe API
 
-3. **Smart Code Review Tool**
-   - Description: AI-assisted code review platform that provides intelligent improvement suggestions.
-   - Technologies: Next.js, OpenAI API, Prisma
-
-4. **AI-Powered Dashboard**
-   - Description: Real-time analytics dashboard with integrated machine learning insights.
-   - Technologies: React, Next.js, TensorFlow.js, TypeScript
-
-5. **Neural Network Visualizer**
-   - Description: Interactive 3D visualization of neural network layers and activations.
-   - Technologies: Three.js, React, WebGL
-
-6. **Data Visualization Suite**
-   - Description: Real-time charts and analytics with WebSocket-powered live updates.
-   - Technologies: D3.js, React, Node.js
-
-7. **KenFoods Salads Website**
+3. **KenFoods Salads Website**
    - Description: A brand site for a healthy fruit salad business, featuring beautiful visuals and intuitive UX.
    - Technologies: Next.js, Tailwind CSS, Framer Motion
 
