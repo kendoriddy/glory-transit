@@ -60,7 +60,7 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* AI/ML Learning Progress Visualization */}
+        {/* AI/ML Learning Areas */}
         <motion.div
           className="glass rounded-lg p-8"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -70,29 +70,31 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <h3 className="font-display text-2xl font-bold mb-6 text-white">
-            AI/ML Learning Journey
+            Currently Exploring
           </h3>
-          <div className="space-y-4">
-            <LearningProgressItem
-              label="Neural Networks"
-              progress={65}
-              delay={0.5}
-            />
-            <LearningProgressItem
-              label="Deep Learning"
-              progress={50}
-              delay={0.6}
-            />
-            <LearningProgressItem
-              label="Natural Language Processing"
-              progress={40}
-              delay={0.7}
-            />
-            <LearningProgressItem
-              label="Computer Vision"
-              progress={35}
-              delay={0.8}
-            />
+          <p className="text-white/70 mb-6">
+            Areas I&apos;m actively learning and experimenting with in AI/ML:
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              "Neural Networks",
+              "Deep Learning",
+              "Natural Language Processing",
+              "Computer Vision",
+            ].map((topic, index) => (
+              <motion.div
+                key={topic}
+                className="flex items-center gap-3 p-4 rounded-lg bg-dark-secondary/50 border border-white/10 hover:border-accent-purple/50 transition-all duration-300"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                whileHover={{ scale: 1.02, x: 5 }}
+              >
+                <div className="w-2 h-2 rounded-full bg-accent-purple" />
+                <span className="text-white/90 font-medium">{topic}</span>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -161,47 +163,5 @@ function SkillTag({
 
       <span className="relative z-10">{skill}</span>
     </motion.button>
-  );
-}
-
-function LearningProgressItem({
-  label,
-  progress,
-  delay,
-}: {
-  label: string;
-  progress: number;
-  delay: number;
-}) {
-  return (
-    <div>
-      <div className="flex justify-between mb-2">
-        <span className="text-white/90 font-medium">{label}</span>
-        <span className="text-accent-green">{progress}%</span>
-      </div>
-      <div className="relative h-3 bg-dark-secondary rounded-full overflow-hidden">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-accent-purple via-accent-blue to-accent-green rounded-full"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${progress}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay, ease: "easeOut" }}
-        >
-          {/* Animated shine effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-            animate={{
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear",
-              repeatDelay: 1,
-            }}
-          />
-        </motion.div>
-      </div>
-    </div>
   );
 }

@@ -75,18 +75,39 @@ export default function About() {
           </motion.p>
         </motion.div>
 
-        {/* Visual Element - Animated Skill Graph */}
+        {/* Visual Element - Technology Focus Areas */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, x: 50 }}
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <div className="relative w-full h-96 glass rounded-lg p-8 flex flex-col justify-center gap-6">
-            <SkillBar label="React/Next.js" progress={90} delay={0.5} />
-            <SkillBar label="TypeScript" progress={85} delay={0.6} />
-            <SkillBar label="AI/ML Learning" progress={45} delay={0.7} />
-            <SkillBar label="Three.js/WebGL" progress={70} delay={0.8} />
+          <div className="relative w-full glass rounded-lg p-8">
+            <h3 className="font-display text-2xl font-bold mb-6 text-white">
+              Core Focus Areas
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <TechFocusCard
+                title="Frontend Development"
+                technologies={["React", "Next.js", "TypeScript"]}
+                delay={0.4}
+              />
+              <TechFocusCard
+                title="3D & Graphics"
+                technologies={["Three.js", "WebGL", "React Three Fiber"]}
+                delay={0.5}
+              />
+              <TechFocusCard
+                title="AI/ML Exploration"
+                technologies={["TensorFlow.js", "Neural Networks", "Python"]}
+                delay={0.6}
+              />
+              <TechFocusCard
+                title="Modern Tooling"
+                technologies={["Tailwind CSS", "Framer Motion", "Vite"]}
+                delay={0.7}
+              />
+            </div>
           </div>
         </motion.div>
       </div>
@@ -94,42 +115,41 @@ export default function About() {
   );
 }
 
-function SkillBar({
-  label,
-  progress,
+function TechFocusCard({
+  title,
+  technologies,
   delay,
 }: {
-  label: string;
-  progress: number;
+  title: string;
+  technologies: string[];
   delay: number;
 }) {
   return (
-    <div>
-      <div className="flex justify-between mb-2">
-        <span className="text-white/90 font-medium">{label}</span>
-        <span className="text-accent-blue">{progress}%</span>
+    <motion.div
+      className="glass rounded-lg p-4 border border-white/10 hover:border-accent-blue/50 transition-all duration-300"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ scale: 1.05, y: -5 }}
+    >
+      <h4 className="font-display text-lg font-semibold mb-3 text-white">
+        {title}
+      </h4>
+      <div className="flex flex-wrap gap-2">
+        {technologies.map((tech, index) => (
+          <motion.span
+            key={tech}
+            className="px-3 py-1 text-xs font-medium bg-accent-blue/20 text-accent-blue rounded-full border border-accent-blue/30"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: delay + index * 0.1 }}
+          >
+            {tech}
+          </motion.span>
+        ))}
       </div>
-      <div className="h-2 bg-dark-secondary rounded-full overflow-hidden">
-        <motion.div
-          className="h-full bg-gradient-to-r from-accent-purple via-accent-blue to-accent-green rounded-full"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${progress}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay, ease: "easeOut" }}
-        >
-          <motion.div
-            className="h-full w-full bg-white/20"
-            animate={{
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        </motion.div>
-      </div>
-    </div>
+    </motion.div>
   );
 }
