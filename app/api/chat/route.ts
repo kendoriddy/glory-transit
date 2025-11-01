@@ -31,7 +31,7 @@ async function getOpenAIResponse(
 
 ${portfolioKnowledge}
 
-Answer questions in a friendly, professional manner. If asked about something not in the knowledge base, politely say you don't have that information. Keep responses concise but informative.`,
+Answer questions in a friendly, professional manner. If asked about something not in the knowledge base, politely say you don&apos;t have that information. Keep responses concise but informative.`,
     },
     ...conversationHistory.slice(-10), // Keep last 10 messages for context
     { role: "user", content: message },
@@ -88,7 +88,7 @@ async function getGeminiResponse(
 
 ${portfolioKnowledge}
 
-Answer questions in a friendly, professional manner. If asked about something not in the knowledge base, politely say you don't have that information. Keep responses concise but informative.`;
+Answer questions in a friendly, professional manner. If asked about something not in the knowledge base, politely say you don&apos;t have that information. Keep responses concise but informative.`;
 
   // Build conversation history in Gemini format
   const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];

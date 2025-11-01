@@ -13,7 +13,8 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm your AI assistant. Ask me anything about this portfolio or the developer behind it!",
+      content:
+        "Hello! I&apos;m Kehinde Onifade&apos;s AI assistant. Ask me anything about this portfolio or the developer behind it!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -71,7 +72,7 @@ export default function Chatbot() {
         {
           role: "assistant",
           content:
-            "Sorry, I'm having trouble connecting right now. Please try again later or check your API configuration.",
+            "Sorry, I&apos;m having trouble connecting right now. Please try again later or check your API configuration.",
         },
       ]);
     } finally {
@@ -169,8 +170,13 @@ export default function Chatbot() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-white">AI Assistant</h3>
-                  <p className="text-xs text-white/60">Ask me anything</p>
+                  <h3 className="font-display font-bold text-white">
+                    AI Assistant
+                  </h3>
+                  <p className="text-xs text-white/60">
+                    Ask me anything about the portfolio or the developer behind
+                    it!
+                  </p>
                 </div>
               </div>
             </div>
@@ -182,7 +188,9 @@ export default function Chatbot() {
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${
+                    message.role === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
                   <div
                     className={`max-w-[80%] rounded-lg p-3 ${
@@ -279,4 +287,3 @@ export default function Chatbot() {
     </>
   );
 }
-

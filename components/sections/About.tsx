@@ -53,7 +53,7 @@ export default function About() {
             className="text-lg text-white/70 leading-relaxed mb-4"
             variants={itemVariants}
           >
-            I'm a passionate frontend engineer with expertise in React and
+            I&apos;m a passionate frontend engineer with expertise in React and
             Next.js, currently exploring the fascinating intersection of web
             development and artificial intelligence.
           </motion.p>
@@ -69,9 +69,9 @@ export default function About() {
             className="text-lg text-white/70 leading-relaxed"
             variants={itemVariants}
           >
-            When I'm not coding, you'll find me experimenting with AI models,
-            contributing to open-source projects, or sharing knowledge with the
-            developer community.
+            When I&apos;m not coding, you&apos;ll find me experimenting with AI
+            models, contributing to open-source projects, or sharing knowledge
+            with the developer community.
           </motion.p>
         </motion.div>
 
@@ -133,4 +133,3 @@ function SkillBar({
     </div>
   );
 }
-
