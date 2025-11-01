@@ -88,11 +88,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // google: "your-google-verification-code", // Add Google Search Console verification
-    // yandex: "your-yandex-verification-code",
-    // yahoo: "your-yahoo-verification-code",
-  },
 };
 
 export default function RootLayout({
