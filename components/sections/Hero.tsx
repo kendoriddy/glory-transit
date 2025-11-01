@@ -110,42 +110,42 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 2 }}
-          className="mt-12"
+          className="mt-12 mb-20 md:mb-24"
         >
           <CTAButton />
         </motion.div>
+      </motion.div>
 
-        {/* Scroll Indicator */}
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.5 }}
+      >
         <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5 }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="flex flex-col items-center gap-2 text-white/60"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="flex flex-col items-center gap-2 text-white/60"
+          <span className="text-sm">Scroll</span>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            <span className="text-sm">Scroll</span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </motion.div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
         </motion.div>
       </motion.div>
     </section>
