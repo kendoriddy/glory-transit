@@ -23,7 +23,52 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Portfolio | Frontend Engineer & AI Enthusiast",
-  description: "Cutting-edge portfolio showcasing React/Next.js expertise and AI/ML learning journey",
+  description:
+    "Welcome to my portfolio! I'm a passionate software engineer from Nigeria with over five years of professional experience in full-stack development.",
+  keywords: [
+    "software engineer",
+    "frontend developer",
+    "ai enthusiast",
+    "portfolio",
+    "react",
+    "next.js",
+    "typescript",
+    "tailwind css",
+    "framer motion",
+    "three.js",
+    "react three fiber",
+    "wordpress",
+    "magento",
+    "node.js",
+    "ruby on rails",
+    "python",
+    "postgresql",
+    "mysql",
+    "git",
+    "github",
+    "docker",
+    "prisma",
+    "webpack",
+    "vite",
+    "jest",
+    "axios",
+    "ci/cd pipelines",
+    "neural networks",
+    "deep learning",
+    "natural language processing",
+    "computer vision",
+    "tensorflow.js",
+  ],
+  authors: [
+    { name: "Onifade Kehinde Ridwan", url: "https://kennyonifade.com" },
+  ],
+  creator: "Onifade Kehinde Ridwan",
+  publisher: "Onifade Kehinde Ridwan",
+  openGraph: {
+    title: "Portfolio | Frontend Engineer & AI Enthusiast",
+    description:
+      "Welcome to my portfolio! I'm a passionate software engineer from Nigeria with over five years of professional experience in full-stack development.",
+  },
 };
 
 export default function RootLayout({
@@ -41,4 +86,3 @@ export default function RootLayout({
     </html>
   );
 }
-
