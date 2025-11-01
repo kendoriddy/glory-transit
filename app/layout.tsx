@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfolio | Frontend Engineer & AI Enthusiast",
     description:
-      "Welcome to my portfolio! I'm a passionate software engineer from Nigeria with over five years of professional experience in full-stack development.",
+      "Welcome to my portfolio! I'm a passionate software engineer with over five years of professional experience in full-stack development.",
     url: "https://kennyonifade.com",
     siteName: "Kehinde Ridwan Onifade Portfolio",
     type: "website",
