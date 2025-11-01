@@ -16,6 +16,13 @@ I&apos;m also the CEO and founder of **SchoolOrbit**, an edtech platform built t
 
 I&apos;m currently expanding my skill set into **Artificial Intelligence and Machine Learning**, combining creativity with intelligent automation to build the next generation of user experiences. Beyond coding, I enjoy mentoring junior developers, writing technical content, and exploring new innovations in the African tech ecosystem.
 
+**Contact Information:**
+- Email: [onifkay@gmail.com](mailto:onifkay@gmail.com)
+- LinkedIn: [kehindeonifade](https://www.linkedin.com/in/kehindeonifade/)
+- GitHub: [kendoriddy](https://github.com/kendoriddy)
+- Twitter: [@RideOnOne09](https://twitter.com/RideOnOne09)
+- Website: [kennyonifade.com](https://kennyonifade.com)
+
 ## Technical Skills
 
 ### Frontend Technologies
