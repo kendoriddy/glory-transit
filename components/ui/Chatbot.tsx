@@ -14,7 +14,7 @@ export default function Chatbot() {
     {
       role: "assistant",
       content:
-        "Hello! I&apos;m Kehinde Onifade&apos;s AI assistant. Ask me anything about this portfolio or the developer behind it!",
+        "Hello! I'm Kehinde Onifade's AI assistant. Ask me anything about this portfolio or the developer behind it!",
     },
   ]);
   const [input, setInput] = useState("");
