@@ -23,8 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Portfolio | Frontend Engineer & AI Enthusiast",
-  description:
-    "Welcome to my portfolio! I'm a passionate software engineer from Nigeria with over five years of professional experience in full-stack development.",
+  description: "See projects, experience, and achievements of Kenny Onifade.",
   keywords: [
     "software engineer",
     "frontend developer",
@@ -64,10 +63,35 @@ export const metadata: Metadata = {
   ],
   creator: "Onifade Kehinde Ridwan",
   publisher: "Onifade Kehinde Ridwan",
+  metadataBase: new URL("https://kennyonifade.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Portfolio | Frontend Engineer & AI Enthusiast",
     description:
       "Welcome to my portfolio! I'm a passionate software engineer from Nigeria with over five years of professional experience in full-stack development.",
+    url: "https://kennyonifade.com",
+    siteName: "Kehinde Ridwan Onifade Portfolio",
+    type: "website",
+    locale: "en_US",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // google: "your-google-verification-code", // Add Google Search Console verification
+    // yandex: "your-yandex-verification-code",
+    // yahoo: "your-yahoo-verification-code",
   },
 };
 
