@@ -86,16 +86,16 @@ const projects = [
     link: "https://mathe-magic.netlify.app/",
     source: "https://github.com/kendoriddy/math-magicians",
   },
-  {
-    id: 5,
-    title: "ASOS Birthday Tracker",
-    description:
-      "I created a webapp that tracks the birthdays of my secondary school classmates.",
-    tech: ["React", "JavaScript", "ESLint", "CSS"].map(cleanTechName),
-    image: getGradientColors(4).join(","),
-    link: "https://asostracker.netlify.app/",
-    source: "https://github.com/kendoriddy/asos-birthday-tracker",
-  },
+  // {
+  //   id: 5,
+  //   title: "ASOS Birthday Tracker",
+  //   description:
+  //     "I created a webapp that tracks the birthdays of my secondary school classmates.",
+  //   tech: ["React", "JavaScript", "ESLint", "CSS"].map(cleanTechName),
+  //   image: getGradientColors(4).join(","),
+  //   link: "https://asostracker.netlify.app/",
+  //   source: "https://github.com/kendoriddy/asos-birthday-tracker",
+  // },
   {
     id: 6,
     title: "Picture World",
