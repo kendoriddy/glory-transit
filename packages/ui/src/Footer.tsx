@@ -16,6 +16,7 @@ export default function Footer({ site = "hub" }: { site?: FooterSite }) {
     { label: "Hub", href: SITE_URLS.hub },
     { label: "Build", href: SITE_URLS.build },
     { label: "Defend", href: SITE_URLS.defend },
+    { label: "Write", href: SITE_URLS.medium },
   ].filter((link) => link.label.toLowerCase() !== site);
 
   return (
