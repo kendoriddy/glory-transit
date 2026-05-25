@@ -15,7 +15,7 @@ export default function PillarCards() {
           <motion.a
             key={pillar.title}
             href={pillar.href}
-            target={pillar.title === "Writing" ? "_blank" : undefined}
+            target="_blank"
             rel={pillar.title === "Writing" ? "noopener noreferrer" : undefined}
             className="glass rounded-xl p-8 block group hover:border-accent-blue/50 border border-white/10 transition-colors"
             initial={{ opacity: 0, y: 40 }}

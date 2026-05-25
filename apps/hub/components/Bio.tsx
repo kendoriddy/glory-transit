@@ -22,7 +22,7 @@ export default function Bio() {
           viewport={{ once: true }}
         >
           <p>
-            I&apos;m Onifade Kehinde Ridwan (Kenny),a Software Engineer with
+            I&apos;m Onifade Kehinde Ridwan (Kenny), a Software Engineer with
             over five years of experience building and deploying
             production-grade applications across web, backend, and product
             systems. My work spans full-stack development, APIs, automation, and
