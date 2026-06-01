@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { SITE_URLS } from "@portfolio/config";
-import "./globals.css";
+import { Inter, Inter_Tight } from "next/font/google";
+import { BRAND, SITE_URLS } from "@portfolio/config";
 import SiteNav from "@/components/SiteNav";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,24 +10,31 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-inter-tight",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
+const title = `Build | ${BRAND.shortName} Onifade — Software & AI Engineering`;
+const description =
+  "Software and AI engineering portfolio — case studies in full-stack development, agents, RAG, and production AI systems.";
 
 export const metadata: Metadata = {
-  title: "Build | Production software and intelligent systems",
-  description:
-    "Software and AI engineering portfolio — case studies in full-stack development, agents, RAG, and production AI systems.",
+  title: {
+    default: title,
+    template: `%s | Build · ${BRAND.shortName} Onifade`,
+  },
+  description,
   metadataBase: new URL(SITE_URLS.build),
+  alternates: { canonical: "/" },
+  openGraph: {
+    title,
+    description,
+    url: SITE_URLS.build,
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -36,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body antialiased bg-dark-primary text-white overflow-x-hidden`}
+        className={`${inter.variable} ${interTight.variable} font-body overflow-x-hidden`}
       >
         <SiteNav />
         {children}

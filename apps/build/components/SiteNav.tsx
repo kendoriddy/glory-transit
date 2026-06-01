@@ -1,30 +1,56 @@
 "use client";
 
 import Link from "next/link";
-import { SITE_URLS } from "@portfolio/config";
+import { useEffect, useState } from "react";
+import { DEFEND_SITE_URL, getHubSiteUrl } from "@portfolio/config";
 
 export default function SiteNav() {
+  const [scrolled, setScrolled] = useState(false);
+  const hubUrl = getHubSiteUrl();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass border-b border-white/10">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-canvas border-b border-line" : "bg-canvas/80"
+      }`}
+    >
+      <nav
+        className="max-w-content mx-auto px-6 h-16 flex items-center justify-between"
+        aria-label="Primary"
+      >
         <Link
           href="/"
-          className="font-display font-bold text-white hover:text-accent-blue transition-colors"
+          className="font-display text-sm font-semibold tracking-tight text-ink"
         >
           Build
         </Link>
         <div className="flex items-center gap-6 text-sm">
           <Link
             href="/work"
-            className="text-white/70 hover:text-accent-blue transition-colors"
+            className="text-muted hover:text-ink transition-colors"
           >
             Work
           </Link>
           <a
-            href={SITE_URLS.hub}
-            className="text-white/50 hover:text-accent-blue transition-colors"
+            href={hubUrl}
+            className="text-muted hover:text-ink transition-colors"
           >
-            Hub
+            Overview
+          </a>
+          <a
+            href={DEFEND_SITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted hover:text-accent transition-colors"
+          >
+            Defend
           </a>
         </div>
       </nav>

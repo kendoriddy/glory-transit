@@ -1,12 +1,12 @@
 # Kenny Onifade — Portfolio Monorepo
 
-Three Next.js apps and shared packages, deployed to separate subdomains:
+Hub and Build apps in this repo; Defend is hosted separately.
 
-| App        | Path          | Domain                                                     |
-| ---------- | ------------- | ---------------------------------------------------------- |
-| **hub**    | `apps/hub`    | [kennyonifade.com](https://kennyonifade.com)               |
-| **build**  | `apps/build`  | [build.kennyonifade.com](https://build.kennyonifade.com)   |
-| **defend** | `apps/defend` | [defend.kennyonifade.com](https://defend.kennyonifade.com) |
+| App        | Path         | Domain                                                                                       |
+| ---------- | ------------ | -------------------------------------------------------------------------------------------- |
+| **hub**    | `apps/hub`   | [kennyonifade.com](https://kennyonifade.com) — overview (port 3000); links to Build & Defend |
+| **build**  | `apps/build` | [build.kennyonifade.com](https://build.kennyonifade.com) — software portfolio (port 3001)    |
+| **defend** | _(external)_ | [defend.kennyonifade.com](https://defend.kennyonifade.com) — separate repo                   |
 
 ## Local development
 
@@ -55,6 +55,14 @@ Add environment variables from `.env.example` to hub and build projects.
 3. Point DNS `defend.kennyonifade.com` and redirect `cyber.kennyonifade.com` if desired
 4. Set `ENABLE_DEFEND_CHAT=true` on defend and add the Chatbot UI when ready
 
-## Case studies
+## Hub portfolio content
+
+Edit `apps/hub/lib/content.ts` for experience, **highlight project names** (`HIGHLIGHT_PROJECTS`), and skills. Full software case studies live in `apps/build/lib/case-studies.ts`.
+
+In development, hub links Build to `http://localhost:3001` and Defend to `https://defend.kennyonifade.com`.
+
+Add your resume PDF at `apps/hub/public/resume.pdf` for the Download Resume button.
+
+## Build app case studies
 
 Edit `apps/build/lib/case-studies.ts` — set `status: "live"` and fill links when each project is documented.

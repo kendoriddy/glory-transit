@@ -1,24 +1,25 @@
-"use client";
-
-import { Suspense } from "react";
-import { Footer, Chatbot, ScrollProgress } from "@portfolio/ui";
-import PortalHero from "@/components/PortalHero";
-import PillarCards from "@/components/PillarCards";
-import Bio from "@/components/Bio";
+import Hero from "@/components/Hero";
+import PortfolioPortfolios from "@/components/PortfolioPortfolios";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import FeaturedProjects from "@/components/FeaturedProjects";
+import Skills from "@/components/Skills";
+import Writing from "@/components/Writing";
 import Contact from "@/components/Contact";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
-      <Suspense fallback={null}>
-        <ScrollProgress />
-        <PortalHero />
-        <PillarCards />
-        <Bio />
-        <Contact />
-        <Footer site="hub" />
-        <Chatbot site="hub" />
-      </Suspense>
+    <main id="main">
+      <Hero />
+      <PortfolioPortfolios />
+      <About />
+      <Experience />
+      <FeaturedProjects />
+      <Skills />
+      <Writing />
+      <Contact />
+      <SiteFooter />
     </main>
   );
 }

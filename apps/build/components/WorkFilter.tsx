@@ -18,16 +18,22 @@ export default function WorkFilter({
   onChange: (value: FilterValue) => void;
 }) {
   return (
-    <div className="flex flex-wrap justify-center gap-3 mb-12">
+    <div
+      className="flex flex-wrap gap-2 mb-12"
+      role="tablist"
+      aria-label="Filter case studies"
+    >
       {filters.map((filter) => (
         <button
           key={filter.value}
           type="button"
+          role="tab"
+          aria-selected={active === filter.value}
           onClick={() => onChange(filter.value)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+          className={`px-4 py-2 text-sm font-medium border transition-colors ${
             active === filter.value
-              ? "bg-accent-blue/20 text-accent-blue border border-accent-blue/50"
-              : "bg-white/5 text-white/60 border border-white/10 hover:border-white/30"
+              ? "bg-ink text-canvas border-ink"
+              : "bg-canvas text-muted border-line hover:border-line-strong hover:text-ink"
           }`}
         >
           {filter.label}

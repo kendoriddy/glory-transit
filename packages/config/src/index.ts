@@ -12,17 +12,22 @@ export const SITE_URLS = {
   cyberLegacy: "https://cyber.kennyonifade.com",
   medium: "https://medium.com/@onifkay",
   schoolorbit: "https://schoolorbit.ng",
+  plugiq: "https://plugiq.io",
 } as const;
+
+/** Place resume PDF at apps/hub/public/resume.pdf */
+export const RESUME_PATH = "/resume.pdf" as const;
 
 export const PILLARS = {
   build: {
     title: "Build",
-    subtitle: "Scalable software, products, and automation solutions",
+    subtitle: "Software engineering, AI systems, and product case studies",
     href: SITE_URLS.build,
+    localPath: "/",
   },
   defend: {
     title: "Defend",
-    subtitle: "Cybersecurity, threat analysis, and secure systems",
+    subtitle: "Cybersecurity, labs, GRC, and defensive security work",
     href: SITE_URLS.defend,
   },
   writing: {
@@ -38,3 +43,25 @@ export const SOCIAL = {
   linkedin: "https://www.linkedin.com/in/kehindeonifade/",
   twitter: "https://x.com/RideOnOne09",
 } as const;
+
+/** Local dev ports when running `npm run dev` */
+export const LOCAL_URLS = {
+  hub: "http://localhost:3000",
+  build: "http://localhost:3001",
+} as const;
+
+/** Cybersecurity portfolio — production site (separate repo). */
+export const DEFEND_SITE_URL = SITE_URLS.defend;
+
+export function getHubSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_HUB_URL) return process.env.NEXT_PUBLIC_HUB_URL;
+  if (process.env.NODE_ENV === "development") return LOCAL_URLS.hub;
+  return SITE_URLS.hub;
+}
+
+export function getBuildSiteUrl(): string {
+  if (process.env.NEXT_PUBLIC_BUILD_URL)
+    return process.env.NEXT_PUBLIC_BUILD_URL;
+  if (process.env.NODE_ENV === "development") return LOCAL_URLS.build;
+  return SITE_URLS.build;
+}
