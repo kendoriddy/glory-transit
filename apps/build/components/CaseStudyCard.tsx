@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { type CaseStudy, TAG_LABELS } from "@/lib/case-studies";
+import { type CaseStudy } from "@/lib/case-studies";
 
 export default function CaseStudyCard({
   study,
@@ -11,9 +12,11 @@ export default function CaseStudyCard({
   study: CaseStudy;
   index?: number;
 }) {
+  const heroSrc = study.images?.hero;
+
   return (
     <motion.article
-      className="border border-line bg-canvas hover:border-line-strong transition-colors flex flex-col"
+      className="border border-line bg-canvas hover:border-line-strong transition-colors flex flex-col overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -23,34 +26,65 @@ export default function CaseStudyCard({
         ease: [0.22, 1, 0.36, 1],
       }}
     >
+      {heroSrc ? (
+        <div className="relative aspect-[16/9] border-b border-line bg-ink/[0.03]">
+          <Image
+            src={heroSrc}
+            alt={study.images?.heroAlt ?? study.title}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 36rem"
+          />
+        </div>
+      ) : (
+        <div className="aspect-[16/9] border-b border-line bg-ink/[0.03] flex items-end p-6">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+            {study.category}
+          </span>
+        </div>
+      )}
+
       <div className="p-8 md:p-10 flex flex-col flex-1">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {study.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2.5 py-0.5 text-xs text-ink/80 border border-line"
-            >
-              {TAG_LABELS[tag]}
-            </span>
-          ))}
-          {study.status === "coming-soon" && (
-            <span className="px-2.5 py-0.5 text-xs text-muted border border-line">
-              In progress
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          {!heroSrc && (
+            <span className="text-xs text-muted">{study.category}</span>
+          )}
+          {heroSrc && (
+            <span className="text-xs text-muted">{study.category}</span>
+          )}
+          {study.flagship && (
+            <span className="px-2 py-0.5 text-xs text-accent border border-accent/30">
+              Flagship
             </span>
           )}
         </div>
+
         <h3 className="font-display text-xl font-semibold text-ink">
           {study.title}
         </h3>
-        <p className="mt-3 text-sm text-muted leading-relaxed line-clamp-2 flex-1">
+        <p className="mt-3 text-sm text-muted leading-relaxed line-clamp-3 flex-1">
           {study.tagline}
         </p>
-        <Link
-          href={`/work/${study.slug}`}
-          className="mt-6 text-sm font-medium text-accent hover:text-ink transition-colors"
-        >
-          View case study →
-        </Link>
+
+        <div className="mt-6 flex flex-wrap items-center gap-4 text-sm font-medium">
+          <Link
+            href={`/work/${study.slug}`}
+            className="text-accent hover:text-ink transition-colors"
+          >
+            Read case study →
+          </Link>
+          {study.links?.site && (
+            <a
+              href={study.links.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted hover:text-ink transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Visit site ↗
+            </a>
+          )}
+        </div>
       </div>
     </motion.article>
   );

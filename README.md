@@ -65,4 +65,4 @@ Add your resume PDF at `apps/hub/public/resume.pdf` for the Download Resume butt
 
 ## Build app case studies
 
-Edit `apps/build/lib/case-studies.ts` — set `status: "live"` and fill links when each project is documented.
+Edit `apps/build/lib/case-studies.ts` for project copy. Optional images: `apps/build/public/projects/` (see README there). Optional `links.repo` per project.

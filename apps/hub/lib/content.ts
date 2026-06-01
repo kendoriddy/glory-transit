@@ -6,10 +6,12 @@ export interface ExperienceEntry {
   highlights: string[];
 }
 
+/** Hub overview — links to full case study on Build */
 export interface HighlightProject {
   name: string;
-  /** Optional short label — e.g. role or domain */
-  context?: string;
+  context: string;
+  /** Build app case study slug */
+  slug: string;
 }
 
 export interface SkillGroup {
@@ -27,15 +29,22 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-/**
- * Cross-cutting project names for the hub overview.
- * Replace or extend this list as you add work across Build and Defend.
- */
 export const HIGHLIGHT_PROJECTS: HighlightProject[] = [
-  { name: "SchoolOrbit", context: "Founder · Edtech" },
-  { name: "PlugIQ", context: "Enterprise workflows" },
-  { name: "AI automation systems", context: "Software" },
-  { name: "Security labs & assessments", context: "Cybersecurity" },
+  {
+    name: "SchoolOrbit",
+    context: "SaaS · EdTech · Founder",
+    slug: "schoolorbit",
+  },
+  {
+    name: "Plug by Descasio",
+    context: "Enterprise SaaS",
+    slug: "plug-by-descasio",
+  },
+  {
+    name: "TailorFlow",
+    context: "Vertical SaaS · Mobile · 2026",
+    slug: "tailorflow",
+  },
 ];
 
 export const EXPERIENCE: ExperienceEntry[] = [
