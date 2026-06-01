@@ -13,6 +13,7 @@ export const SITE_URLS = {
   medium: "https://medium.com/@onifkay",
   schoolorbit: "https://schoolorbit.ng",
   plugiq: "https://plugiq.io",
+  tailorflow: "https://tailorflow.kennyonifade.com/",
 } as const;
 
 /** Place resume PDF at apps/hub/public/resume.pdf */

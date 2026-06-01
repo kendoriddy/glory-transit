@@ -1,21 +1,8 @@
-"use client";
-
-import { useState, useMemo } from "react";
-import { caseStudies, type CaseStudyTag } from "@/lib/case-studies";
+import { caseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import WorkFilter from "@/components/WorkFilter";
 import SiteFooter from "@/components/SiteFooter";
 
-type FilterValue = "all" | CaseStudyTag;
-
 export default function WorkPage() {
-  const [filter, setFilter] = useState<FilterValue>("all");
-
-  const filtered = useMemo(() => {
-    if (filter === "all") return caseStudies;
-    return caseStudies.filter((s) => s.tags.includes(filter));
-  }, [filter]);
-
   return (
     <main className="min-h-screen pt-28 pb-16 px-6">
       <div className="max-w-content mx-auto">
@@ -26,16 +13,13 @@ export default function WorkPage() {
           Case studies
         </h1>
         <p className="mt-4 text-muted max-w-2xl leading-relaxed">
-          Software engineering and AI engineering projects. Each case study
-          covers problem, approach, and outcomes as documentation goes live.
+          In-depth write-ups on products and platforms — from founding
+          SchoolOrbit and TailorFlow to shipping enterprise workflow software at
+          Descasio.
         </p>
 
-        <div className="mt-12">
-          <WorkFilter active={filter} onChange={setFilter} />
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {filtered.map((study, i) => (
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {caseStudies.map((study, i) => (
             <CaseStudyCard key={study.slug} study={study} index={i} />
           ))}
         </div>
