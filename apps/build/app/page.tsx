@@ -1,75 +1,70 @@
 "use client";
 
-import { Suspense } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Footer, Chatbot, CTAButton } from "@portfolio/ui";
 import { getFeaturedCaseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function BuildHome() {
   const featured = getFeaturedCaseStudies(4);
 
   return (
-    <main className="relative min-h-screen pt-24">
-      <Suspense fallback={null}>
-        <section className="px-6 py-16 text-center max-w-4xl mx-auto">
-          <motion.p
-            className="text-accent-blue font-mono text-sm mb-4 tracking-widest uppercase"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Software &amp; AI Engineering
-          </motion.p>
-          <motion.h1
-            className="font-display text-4xl md:text-6xl font-bold mb-6 gradient-text"
-            initial={{ opacity: 0, y: 20 }}
+    <main className="min-h-screen">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6">
+        <div className="max-w-content mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            Build
-          </motion.h1>
-          <motion.p
-            className="text-xl text-white/80 mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-          >
-            Production software and intelligent systems
-          </motion.p>
-          <motion.p
-            className="text-white/60 text-lg mb-10 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Case studies in full-stack engineering, LLM applications, agents,
-            RAG, and shipping reliable AI-powered products — not ML research.
-          </motion.p>
-          <CTAButton href="/work">View all work</CTAButton>
-        </section>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-6">
+              Software &amp; AI Engineering
+            </p>
+            <h1 className="font-display text-display-xl font-semibold text-ink text-balance max-w-3xl">
+              Build
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
+              Production software and intelligent systems — full-stack
+              engineering, LLM applications, agents, RAG, and shipping reliable
+              AI-powered products.
+            </p>
+            <Link
+              href="/work"
+              className="inline-block mt-10 px-6 py-3 text-sm font-medium bg-ink text-canvas border border-ink hover:bg-ink/90 transition-colors"
+            >
+              View all work
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
-        <section className="px-6 py-16 max-w-7xl mx-auto">
-          <h2 className="font-display text-3xl font-bold mb-10 text-center gradient-text">
+      <section className="px-6 pb-24 md:pb-32 border-t border-line">
+        <div className="max-w-content mx-auto">
+          <h2 className="font-display text-display-lg font-semibold text-ink mb-4">
             Featured work
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <p className="text-muted max-w-xl mb-12 leading-relaxed">
+            Case studies and project write-ups. Documentation is added as each
+            project is ready to share in depth.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {featured.map((study, i) => (
               <CaseStudyCard key={study.slug} study={study} index={i} />
             ))}
           </div>
-          <p className="text-center mt-10">
+          <p className="mt-12">
             <Link
               href="/work"
-              className="text-accent-blue hover:underline font-medium"
+              className="text-sm font-medium text-accent hover:text-ink transition-colors"
             >
-              See all 8 case studies →
+              See all case studies →
             </Link>
           </p>
-        </section>
+        </div>
+      </section>
 
-        <Footer site="build" />
-        <Chatbot site="build" />
-      </Suspense>
+      <SiteFooter />
     </main>
   );
 }

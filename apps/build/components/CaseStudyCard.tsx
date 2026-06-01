@@ -11,51 +11,43 @@ export default function CaseStudyCard({
   study: CaseStudy;
   index?: number;
 }) {
-  const gradientIndex = index % 3;
-  const gradients = [
-    "from-accent-purple/30 to-accent-blue/30",
-    "from-accent-blue/30 to-accent-green/30",
-    "from-accent-green/30 to-accent-purple/30",
-  ];
-
   return (
     <motion.article
-      className="glass rounded-lg overflow-hidden border border-white/10 hover:border-accent-blue/40 transition-colors"
-      initial={{ opacity: 0, y: 30 }}
+      className="border border-line bg-canvas hover:border-line-strong transition-colors flex flex-col"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      whileHover={{ y: -4 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{
+        duration: 0.45,
+        delay: index * 0.05,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
-      <div
-        className={`h-32 bg-gradient-to-br ${gradients[gradientIndex]} flex items-center justify-center px-4`}
-      >
-        <span className="font-display text-lg font-bold text-white/90 text-center">
-          {study.title}
-        </span>
-      </div>
-      <div className="p-6">
-        <div className="flex flex-wrap gap-2 mb-3">
+      <div className="p-8 md:p-10 flex flex-col flex-1">
+        <div className="flex flex-wrap gap-2 mb-4">
           {study.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-xs font-medium rounded-full bg-accent-blue/20 text-accent-blue border border-accent-blue/30"
+              className="px-2.5 py-0.5 text-xs text-ink/80 border border-line"
             >
               {TAG_LABELS[tag]}
             </span>
           ))}
           {study.status === "coming-soon" && (
-            <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-white/10 text-white/60 border border-white/20">
+            <span className="px-2.5 py-0.5 text-xs text-muted border border-line">
               In progress
             </span>
           )}
         </div>
-        <p className="text-white/70 text-sm mb-4 line-clamp-2">
+        <h3 className="font-display text-xl font-semibold text-ink">
+          {study.title}
+        </h3>
+        <p className="mt-3 text-sm text-muted leading-relaxed line-clamp-2 flex-1">
           {study.tagline}
         </p>
         <Link
           href={`/work/${study.slug}`}
-          className="text-accent-blue text-sm font-medium hover:text-accent-green transition-colors inline-flex items-center gap-1"
+          className="mt-6 text-sm font-medium text-accent hover:text-ink transition-colors"
         >
           View case study →
         </Link>
