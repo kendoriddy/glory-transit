@@ -517,8 +517,8 @@ export const caseStudies: CaseStudy[] = [
     category: "Relationship Tech · Social Platform · Founder Project",
     role: "Founder & Full-Stack Engineer",
     links: {
-      site: SITE_URLS.loveapp,
-      siteLabel: "loveapp.com",
+      site: SITE_URLS.mariken,
+      siteLabel: "https://mariken.kennyonifade.com/",
     },
     images: {
       hero: "/projects/loveapp/hero.png",

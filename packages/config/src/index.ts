@@ -14,7 +14,7 @@ export const SITE_URLS = {
   schoolorbit: "https://schoolorbit.ng",
   plugiq: "https://plugiq.io",
   tailorflow: "https://tailorflow.kennyonifade.com/",
-  loveapp: "https://loveapp.com",
+  mariken: "https://mariken.kennyonifade.com/",
 } as const;
 
 /** Place resume PDF at apps/hub/public/resume.pdf */
