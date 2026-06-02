@@ -510,6 +510,228 @@ export const caseStudies: CaseStudy[] = [
     impactStatement:
       "TailorFlow demonstrates my ability to identify underserved markets, design products around real-world operational constraints, and build scalable mobile systems that balance user experience, technical architecture, and business viability.",
   },
+  {
+    slug: "loveapp",
+    title: "LoveApp",
+    tagline: "Private Relationship & Family Operating System",
+    category: "Relationship Tech · Social Platform · Founder Project",
+    role: "Founder & Full-Stack Engineer",
+    links: {
+      site: SITE_URLS.loveapp,
+      siteLabel: "loveapp.com",
+    },
+    images: {
+      hero: "/projects/loveapp/hero.png",
+      heroAlt: "LoveApp screenshot",
+      gallery: [
+        {
+          src: "/projects/loveapp/gallery-1.png",
+          alt: "LoveApp screenshot",
+        },
+        {
+          src: "/projects/loveapp/gallery-2.png",
+          alt: "LoveApp screenshot",
+        },
+        {
+          src: "/projects/loveapp/gallery-3.png",
+          alt: "LoveApp screenshot",
+        },
+      ],
+    },
+    overview:
+      "LoveApp is a secure platform designed to help families, couples, and close-knit communities preserve memories, coordinate activities, and strengthen relationships inside private digital spaces. Instead of broadcasting to public audiences, users participate in trusted family circles with their own content, events, tasks, and long-term communication — protected by strict access controls.",
+    problem: {
+      intro:
+        "Families and relationships increasingly rely on fragmented tools for day-to-day connection and coordination.",
+      bullets: [
+        "WhatsApp for communication",
+        "Google Photos for memories",
+        "Notes apps for letters",
+        "Calendars for events",
+        "Task apps for coordination",
+      ],
+      outro:
+        "As information gets scattered, memories get lost, coordination becomes difficult, and sensitive content ends up on platforms not designed for intimacy or privacy.",
+    },
+    problemAreas: [
+      {
+        title: "Scattered information",
+        description:
+          "Critical relationship context lives across multiple apps, making it hard to maintain a shared family history and routine.",
+      },
+      {
+        title: "Weak privacy boundaries",
+        description:
+          "Sensitive content is often shared through tools designed for broad communication rather than strict, group-scoped access control.",
+      },
+      {
+        title: "Unstructured relationship interaction",
+        description:
+          "Most products optimize for engagement. Families need tools that support long-term communication, coordination, and connection.",
+      },
+    ],
+    goal: "Build a digital home for families and relationships.",
+    goalBullets: [
+      "Create private family spaces",
+      "Share memories securely",
+      "Organize events and anniversaries",
+      "Coordinate responsibilities",
+      "Preserve meaningful communication",
+      "Maintain strict access controls",
+    ],
+    responsibilities: [
+      "Product ideation",
+      "User experience design",
+      "Database architecture",
+      "API design",
+      "Authentication system",
+      "Frontend implementation",
+      "Backend implementation",
+      "Access control architecture",
+      "Media management system",
+    ],
+    solution: {
+      intro:
+        "LoveApp was designed around isolated, private family spaces. Each family acts as its own environment for communication, memories, and coordination.",
+      bullets: [
+        "Timeline — a private feed for family updates",
+        "Albums — organized collections for preserving memories",
+        "Letters — rich-text, long-form communication",
+        "The Box — sealed messages revealed by recipients",
+        "Calendar — shared events and anniversaries",
+        "Tasks — collaborative household coordination",
+        "Reminders — personal and shared prompts",
+        "Relationship Hub — tools for healthier communication",
+      ],
+    },
+    solutionSections: [
+      {
+        title: "Active Family Context (multi-family architecture)",
+        description:
+          "Users can belong to multiple relationship groups and switch their active family at any time. Content, events, and tasks automatically re-scope to the currently selected family — keeping the experience clean while maintaining strict data isolation.",
+      },
+      {
+        title: "Privacy-first product design",
+        description:
+          "Every interaction is group-scoped. Requests validate authentication, membership, membership status, and permissions before allowing access to family content.",
+      },
+      {
+        title: "Media-rich experiences",
+        description:
+          "The platform supports images, video, and audio with cloud storage and performance-conscious retrieval to preserve meaningful moments without compromising reliability.",
+      },
+    ],
+    features: [
+      "Private family spaces",
+      "Timeline posts (text, images, video, audio, categories)",
+      "Albums for structured memory collections",
+      "Rich-text letters for long-form communication",
+      "The Box (sealed messages)",
+      "Shared calendar (events, anniversaries)",
+      "Collaborative task management",
+      "Personal and shared reminders",
+      "Relationship Hub (goals, rules, Q&A activities)",
+      "Invitation-based onboarding and growth",
+      "Role-based access control (RBAC) with membership statuses",
+      "Multi-family context switching",
+    ],
+    architecture: [
+      {
+        title: "Frontend",
+        items: [
+          "Next.js 14 (App Router)",
+          "TypeScript",
+          "Tailwind CSS",
+          "Server-first rendering",
+        ],
+      },
+      {
+        title: "Backend",
+        items: ["Next.js API Routes", "TypeScript", "Authorization-first APIs"],
+      },
+      {
+        title: "Database",
+        items: ["PostgreSQL", "Prisma ORM", "Multi-tenant group data model"],
+      },
+      {
+        title: "Authentication",
+        items: [
+          "NextAuth.js",
+          "Credentials authentication",
+          "Session management",
+        ],
+      },
+      {
+        title: "Media infrastructure",
+        items: [
+          "Vercel Blob Storage",
+          "Secure uploads for images, video, and audio",
+        ],
+      },
+      {
+        title: "Security architecture",
+        items: [
+          "Group-level authorization",
+          "Membership status enforcement (active/suspended/dismissed)",
+          "Permission checks per request",
+        ],
+      },
+    ],
+    architectureDecisions: [
+      {
+        title: "Multi-family membership model",
+        description:
+          "The data model treats users as members of multiple relationship groups simultaneously (family, friends, communities). The Active Family Context acts as the primary scope for queries and UI state, preventing cross-family leakage while keeping context switching effortless.",
+      },
+      {
+        title: "Relationship-aware memberships",
+        description:
+          "Memberships carry role (owner/admin/member), status (active/suspended/dismissed), and relationship labels (e.g., husband, wife, sister, cousin). This models real-world structures and enables granular access control without forcing generic group semantics.",
+      },
+      {
+        title: "Authorization as a first-class API constraint",
+        description:
+          "Every request validates authentication, membership, membership status, and permissions before data access. Privacy is enforced consistently at the API boundary rather than relying on UI-only constraints.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Multi-tenant family isolation",
+        description:
+          "Ensuring complete separation between family spaces while allowing the same user to participate in multiple groups, with all reads/writes correctly scoped to the active family.",
+      },
+      {
+        title: "Invitation-based growth",
+        description:
+          "Designing a frictionless onboarding flow where users can receive an invite, create an account, and join a family in a single experience — including invite token management and relationship assignment.",
+      },
+      {
+        title: "Rich media handling",
+        description:
+          "Supporting image, video, and audio uploads required reliable upload flows, storage strategy, and performant retrieval without weakening privacy guarantees.",
+      },
+      {
+        title: "Relationship-oriented UX",
+        description:
+          "Designing interaction patterns that optimize for connection (letters, sealed messages, shared goals) rather than typical engagement-driven social mechanics.",
+      },
+    ],
+    outcome: [
+      "Demonstrated a robust multi-tenant architecture with strict family-level data isolation.",
+      "Implemented role-based access control and membership status enforcement as core product constraints.",
+      "Designed a relational data model capable of representing real-world family structures and relationship labels.",
+      "Delivered a full-stack Next.js platform with secure media handling and invitation-driven onboarding.",
+      "Validated product thinking beyond conventional CRUD systems — optimizing for trust, privacy, and long-term connection.",
+    ],
+    lessons: [
+      "Relationships have different product needs — assumptions from public social networks do not apply to families.",
+      "Access control is a product feature — privacy directly influences trust and adoption.",
+      "Context switching is powerful — active-family scoping enabled a clean UX while supporting complex membership realities.",
+      "Software can strengthen human connection — technology can support emotional connection, not only efficiency.",
+    ],
+    impactStatement:
+      "LoveApp highlights my ability to design privacy-first products, build multi-tenant systems with robust authorization, and translate nuanced human workflows into secure, scalable full-stack software.",
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
