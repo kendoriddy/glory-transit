@@ -16,7 +16,7 @@ export default function Contact() {
       label="Contact"
       title="Let's build something meaningful."
       description="Open to engineering roles, security opportunities, collaborations, and conversations with founders."
-      className="border-t border-line"
+      className="border-t border-line bg-gradient-to-t from-accent/[0.05] to-transparent"
     >
       <div ref={ref} className="grid lg:grid-cols-2 gap-16 lg:gap-24">
         <motion.div

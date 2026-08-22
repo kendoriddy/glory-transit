@@ -2,17 +2,21 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import AmbientOrbs from "@/components/AmbientOrbs";
 
 export default function WorkHero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6">
-      <div className="max-w-content mx-auto w-full">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden grain">
+      <AmbientOrbs />
+      <div className="mesh-grid absolute inset-0 opacity-60" aria-hidden />
+      <div className="max-w-content mx-auto w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-8 flex items-center gap-3">
+            <span className="inline-block h-px w-6 bg-accent/50" aria-hidden />
             Full-Stack / Product Engineer
           </p>
 

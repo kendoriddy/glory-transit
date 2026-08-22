@@ -9,7 +9,7 @@ export default function Writing() {
       label="Writing"
       title="Thinking in public"
       description="Technical articles on engineering, product, and security — published on Medium to share what I learn while building."
-      className="border-t border-line bg-ink/[0.02]"
+      className="border-t border-line bg-gradient-to-br from-accent/[0.07] via-ink/[0.02] to-transparent"
     >
       <div className="max-w-xl">
         <p className="text-lg text-muted leading-relaxed">

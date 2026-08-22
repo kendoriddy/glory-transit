@@ -16,7 +16,7 @@ export default function CaseStudyCard({
 
   return (
     <motion.article
-      className="border border-line bg-canvas hover:border-line-strong transition-colors flex flex-col overflow-hidden"
+      className="border border-line bg-canvas/80 hover:border-accent/30 hover:shadow-lift transition-all duration-500 ease-smooth flex flex-col overflow-hidden group"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -25,19 +25,20 @@ export default function CaseStudyCard({
         delay: index * 0.05,
         ease: [0.22, 1, 0.36, 1],
       }}
+      whileHover={{ y: -4 }}
     >
       {heroSrc ? (
-        <div className="relative aspect-[16/9] border-b border-line bg-ink/[0.03]">
+        <div className="relative aspect-[16/9] border-b border-line bg-ink/[0.03] overflow-hidden">
           <Image
             src={heroSrc}
             alt={study.images?.heroAlt ?? study.title}
             fill
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-700 ease-smooth group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, 36rem"
           />
         </div>
       ) : (
-        <div className="aspect-[16/9] border-b border-line bg-ink/[0.03] flex items-end p-6">
+        <div className="aspect-[16/9] border-b border-line bg-gradient-to-br from-accent/10 to-ink/[0.04] flex items-end p-6">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
             {study.category}
           </span>
@@ -46,20 +47,15 @@ export default function CaseStudyCard({
 
       <div className="p-8 md:p-10 flex flex-col flex-1">
         <div className="flex flex-wrap items-center gap-2 mb-3">
-          {!heroSrc && (
-            <span className="text-xs text-muted">{study.category}</span>
-          )}
-          {heroSrc && (
-            <span className="text-xs text-muted">{study.category}</span>
-          )}
+          <span className="text-xs text-muted">{study.category}</span>
           {study.flagship && (
-            <span className="px-2 py-0.5 text-xs text-accent border border-accent/30">
+            <span className="px-2 py-0.5 text-xs text-accent border border-accent/30 bg-accent/[0.04]">
               Flagship
             </span>
           )}
         </div>
 
-        <h3 className="font-display text-xl font-semibold text-ink">
+        <h3 className="font-display text-xl font-semibold text-ink group-hover:text-accent transition-colors duration-300">
           {study.title}
         </h3>
         <p className="mt-3 text-sm text-muted leading-relaxed line-clamp-3 flex-1">

@@ -1,5 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import { WORK_CASE_STUDIES } from "@/lib/work-content";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function WorkSelected() {
   return (
@@ -11,10 +16,15 @@ export default function WorkSelected() {
       className="border-t border-line"
     >
       <ul className="grid gap-6 md:gap-8">
-        {WORK_CASE_STUDIES.map((study) => (
-          <li
+        {WORK_CASE_STUDIES.map((study, index) => (
+          <motion.li
             key={study.name}
-            className="border border-line p-8 md:p-10 hover:border-line-strong transition-colors"
+            className="border border-line p-8 md:p-10 bg-canvas/60 hover:border-accent/30 hover:shadow-soft transition-all duration-500 ease-smooth"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.45, delay: index * 0.08, ease }}
+            whileHover={{ y: -3 }}
           >
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-4">
               {study.name}
@@ -45,14 +55,14 @@ export default function WorkSelected() {
                 {study.focus.map((item) => (
                   <li
                     key={item}
-                    className="px-3 py-1.5 text-sm border border-line text-ink/80"
+                    className="px-3 py-1.5 text-sm border border-line text-ink/80 hover:border-accent/40 hover:text-accent transition-colors duration-300"
                   >
                     {item}
                   </li>
                 ))}
               </ul>
             )}
-          </li>
+          </motion.li>
         ))}
       </ul>
     </Section>

@@ -17,8 +17,10 @@ export default function SiteNav() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-canvas border-b border-line" : "bg-canvas/80"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-canvas/80 backdrop-blur-xl border-b border-line shadow-soft"
+          : "bg-canvas/60 backdrop-blur-md"
       }`}
     >
       <nav
@@ -34,13 +36,13 @@ export default function SiteNav() {
         <div className="flex items-center gap-6 text-sm">
           <Link
             href="/work"
-            className="text-muted hover:text-ink transition-colors"
+            className="text-muted hover:text-ink transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
           >
             Work
           </Link>
           <a
             href={hubUrl}
-            className="text-muted hover:text-ink transition-colors"
+            className="text-muted hover:text-ink transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
           >
             Overview
           </a>
@@ -48,7 +50,7 @@ export default function SiteNav() {
             href={DEFEND_SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-accent transition-colors"
+            className="text-muted hover:text-accent transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
           >
             Defend
           </a>

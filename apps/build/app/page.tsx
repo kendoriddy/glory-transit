@@ -11,14 +11,20 @@ export default function BuildHome() {
 
   return (
     <main className="min-h-screen">
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-6">
-        <div className="max-w-content mx-auto">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden">
+        <div className="mesh-grid absolute inset-0 opacity-60" aria-hidden />
+        <div
+          className="pointer-events-none absolute -top-20 -left-10 h-72 w-72 rounded-full bg-accent/[0.08] blur-3xl"
+          aria-hidden
+        />
+        <div className="max-w-content mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-6">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-6 flex items-center gap-3">
+              <span className="inline-block h-px w-6 bg-accent/50" aria-hidden />
               Software &amp; AI Engineering
             </p>
             <h1 className="font-display text-display-xl font-semibold text-ink text-balance max-w-3xl">
@@ -31,7 +37,7 @@ export default function BuildHome() {
             </p>
             <Link
               href="/work"
-              className="inline-block mt-10 px-6 py-3 text-sm font-medium bg-ink text-canvas border border-ink hover:bg-ink/90 transition-colors"
+              className="inline-block mt-10 px-6 py-3 text-sm font-medium bg-ink text-canvas border border-ink hover:bg-accent hover:border-accent shadow-soft hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300"
             >
               View all work
             </Link>
