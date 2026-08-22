@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { BRAND, SITE_URLS } from "@portfolio/config";
 import SiteHeader from "@/components/SiteHeader";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -88,6 +89,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <ScrollProgress />
         <SiteHeader />
         {children}
       </body>

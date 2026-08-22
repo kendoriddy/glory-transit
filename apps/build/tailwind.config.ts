@@ -32,6 +32,13 @@ const config: Config = {
       maxWidth: {
         content: "72rem",
       },
+      transitionTimingFunction: {
+        smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+      boxShadow: {
+        soft: "0 1px 0 rgba(17,17,17,0.04), 0 16px 48px -20px rgba(17,17,17,0.14)",
+        lift: "0 2px 0 rgba(17,17,17,0.04), 0 24px 56px -24px rgba(17,17,17,0.2)",
+      },
     },
   },
   plugins: [],

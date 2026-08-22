@@ -49,11 +49,7 @@ export default function ContactForm({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6"
-      noValidate
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
       <Field
         label="Name"
         name="name"
@@ -95,7 +91,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full md:w-auto px-8 py-3 text-sm font-medium bg-ink text-canvas border border-ink hover:bg-ink/90 transition-colors disabled:opacity-50"
+        className="w-full md:w-auto px-8 py-3 text-sm font-medium bg-ink text-canvas border border-ink hover:bg-accent hover:border-accent shadow-soft hover:shadow-lift hover:-translate-y-0.5 transition-all duration-300 ease-smooth disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-ink"
       >
         {isSubmitting ? "Sending…" : submitLabel}
       </button>
@@ -136,7 +132,7 @@ function Field({
               id={name}
               {...field}
               rows={5}
-              className="w-full px-4 py-3 bg-canvas border border-line-strong text-ink placeholder:text-muted/60 focus:border-ink/30 focus:outline-none resize-y min-h-[140px]"
+              className="w-full px-4 py-3 bg-white/40 border border-line-strong text-ink placeholder:text-muted/60 focus:border-accent/50 focus:ring-2 focus:ring-accent/10 focus:outline-none resize-y min-h-[140px] transition-all duration-300"
               aria-invalid={!!fieldState.error}
               aria-describedby={fieldState.error ? `${name}-error` : undefined}
             />
@@ -145,7 +141,7 @@ function Field({
               id={name}
               type={type}
               {...field}
-              className="w-full px-4 py-3 bg-canvas border border-line-strong text-ink placeholder:text-muted/60 focus:border-ink/30 focus:outline-none"
+              className="w-full px-4 py-3 bg-white/40 border border-line-strong text-ink placeholder:text-muted/60 focus:border-accent/50 focus:ring-2 focus:ring-accent/10 focus:outline-none transition-all duration-300"
               aria-invalid={!!fieldState.error}
               aria-describedby={fieldState.error ? `${name}-error` : undefined}
             />

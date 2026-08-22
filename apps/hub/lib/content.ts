@@ -12,6 +12,8 @@ export interface HighlightProject {
   context: string;
   /** Build app case study slug */
   slug: string;
+  /** Optional local thumbnail under /public */
+  image?: string;
 }
 
 export interface SkillGroup {
@@ -35,16 +37,19 @@ export const HIGHLIGHT_PROJECTS: HighlightProject[] = [
     name: "SchoolOrbit",
     context: "SaaS · EdTech · Founder",
     slug: "schoolorbit",
+    image: "/projects/schoolorbit/hero.png",
   },
   {
     name: "Plug by Descasio",
     context: "Enterprise SaaS",
     slug: "plug-by-descasio",
+    image: "/projects/plug-by-descasio/hero.png",
   },
   {
     name: "TailorFlow",
     context: "Vertical SaaS · Mobile · 2026",
     slug: "tailorflow",
+    image: "/projects/tailorflow/hero.png",
   },
 ];
 

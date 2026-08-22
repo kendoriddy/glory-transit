@@ -13,8 +13,12 @@ export default function SiteFooter() {
   const buildUrl = getBuildSiteUrl();
 
   return (
-    <footer className="border-t border-line px-6 py-16">
-      <div className="max-w-content mx-auto grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
+    <footer className="border-t border-line px-6 py-16 relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/[0.06] blur-3xl"
+        aria-hidden
+      />
+      <div className="max-w-content mx-auto grid gap-12 md:grid-cols-[1.5fr_1fr_1fr] relative">
         <div>
           <p className="font-display text-lg font-semibold text-ink">
             {BRAND.fullName}

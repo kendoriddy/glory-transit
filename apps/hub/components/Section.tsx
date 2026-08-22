@@ -33,12 +33,16 @@ export default function Section({
       <div className="max-w-content mx-auto">
         <motion.header
           className="mb-14 md:mb-20 max-w-2xl"
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           {label && (
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-4 flex items-center gap-3">
+              <span
+                className="inline-block h-px w-6 bg-accent/50"
+                aria-hidden
+              />
               {label}
             </p>
           )}
@@ -54,7 +58,17 @@ export default function Section({
             </p>
           )}
         </motion.header>
-        {children}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{
+            duration: 0.55,
+            delay: 0.08,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          {children}
+        </motion.div>
       </div>
     </section>
   );

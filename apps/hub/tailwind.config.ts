@@ -35,6 +35,24 @@ const config: Config = {
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
+      keyframes: {
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
+      },
+      animation: {
+        "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        shimmer: "shimmer 8s ease-in-out infinite",
+      },
+      boxShadow: {
+        soft: "0 1px 0 rgba(17,17,17,0.04), 0 16px 48px -20px rgba(17,17,17,0.14)",
+        lift: "0 2px 0 rgba(17,17,17,0.04), 0 24px 56px -24px rgba(17,17,17,0.2)",
+      },
     },
   },
   plugins: [],

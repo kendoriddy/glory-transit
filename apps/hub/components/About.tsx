@@ -45,7 +45,7 @@ export default function About() {
             handle real people&apos;s data and real institutions&apos;
             operations.
           </p>
-          <p className="text-ink font-medium">
+          <p className="text-ink font-medium border-l-2 border-accent/40 pl-4">
             I&apos;m most alive when the problem is hard, the users are real,
             and the solution has to hold up in production.
           </p>
