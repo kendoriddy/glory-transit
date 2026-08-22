@@ -20,13 +20,14 @@ export interface SkillGroup {
 }
 
 export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Portfolios", href: "#portfolios" },
-  { label: "Highlights", href: "#highlights" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Writing", href: "#writing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/#about" },
+  { label: "Portfolios", href: "/#portfolios" },
+  { label: "Highlights", href: "/#highlights" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Writing", href: "/#writing" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const HIGHLIGHT_PROJECTS: HighlightProject[] = [
