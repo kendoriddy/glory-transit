@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Section from "@/components/Section";
 import { EXPERIENCE } from "@/lib/content";
 
@@ -17,48 +17,36 @@ export default function Experience() {
       label="Experience"
       title="Work that compounds."
       description="A timeline of building products, leading delivery, and growing into security practice."
-      className="border-t border-line"
+      className="border-t border-line bg-surface/20"
     >
       <div ref={listRef} className="relative">
-        <motion.div
-          className="absolute left-0 md:left-[7.5rem] top-2 bottom-2 w-px bg-gradient-to-b from-accent/50 via-line-strong to-transparent hidden md:block origin-top"
-          aria-hidden
-          initial={{ scaleY: 0 }}
-          animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-          transition={{ duration: 1.1, ease }}
-        />
-
-        <ol className="space-y-16 md:space-y-20">
+        <ol className="space-y-0 divide-y divide-line border-y border-line">
           {EXPERIENCE.map((entry, index) => (
             <motion.li
               key={`${entry.company}-${entry.role}`}
-              className="md:grid md:grid-cols-[7.5rem_1fr] md:gap-12 relative"
+              className="py-10 md:py-12 grid md:grid-cols-[10rem_1fr] gap-6 md:gap-12"
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{
                 duration: 0.55,
-                delay: index * 0.12,
+                delay: index * 0.1,
                 ease,
               }}
             >
-              <span
-                className="hidden md:block absolute left-[7.5rem] -translate-x-1/2 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-canvas shadow-[0_0_0_4px_rgba(31,77,58,0.12)] z-10"
-                aria-hidden
-              />
-              <div className="mb-4 md:mb-0">
-                <time className="text-sm font-medium text-muted tabular-nums">
+              <div>
+                <time className="text-[11px] font-extrabold uppercase tracking-[0.1em] text-accent tabular-nums">
                   {entry.period}
                 </time>
               </div>
 
               <div className="group">
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-ink group-hover:text-accent transition-colors duration-300">
+                <h3 className="font-display text-xl md:text-2xl font-extrabold text-ink group-hover:text-accent transition-colors">
                   {entry.role}
                 </h3>
-                <p className="mt-1 text-ink/80">
+                <p className="mt-1 text-muted">
                   {entry.company}
                   {entry.location && (
-                    <span className="text-muted"> · {entry.location}</span>
+                    <span className="text-muted/70"> · {entry.location}</span>
                   )}
                 </p>
                 <ul className="mt-6 space-y-3 text-muted leading-relaxed">

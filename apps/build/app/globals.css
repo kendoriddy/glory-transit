@@ -3,35 +3,39 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --color-bg: #000000;
+    --color-bg-alt: #080808;
+    --color-surface: #0d0d0d;
+    --color-surface-elevated: #1a1a1a;
+    --color-text: #f5f0e8;
+    --color-text-muted: #a8a8a8;
+    --color-accent: #b08d57;
+    --color-accent-soft: rgba(176, 141, 87, 0.13);
+    --color-accent-border: rgba(176, 141, 87, 0.38);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.14);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-canvas text-ink antialiased;
-    font-feature-settings:
-      "kern" 1,
-      "liga" 1;
-    background-image:
-      radial-gradient(
-        ellipse 80% 50% at 10% -10%,
-        rgba(31, 77, 58, 0.07),
-        transparent 55%
-      ),
-      radial-gradient(
-        ellipse 60% 40% at 95% 5%,
-        rgba(31, 77, 58, 0.05),
-        transparent 50%
-      );
-    background-attachment: fixed;
+    font-feature-settings: "kern" 1, "liga" 1;
+    background-color: var(--color-bg);
+    color: var(--color-text);
   }
 
   ::selection {
-    @apply bg-accent/15 text-ink;
+    background: var(--color-accent-soft);
+    color: var(--color-text);
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-accent;
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--color-accent);
   }
 
   ::-webkit-scrollbar {
@@ -39,11 +43,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #f7f5f2;
+    background: var(--color-bg);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(31, 77, 58, 0.25);
+    background: var(--color-accent-border);
     border-radius: 9999px;
   }
 }
@@ -51,17 +55,5 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  .mesh-grid {
-    background-image:
-      linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(
-      ellipse 70% 60% at 50% 40%,
-      black 20%,
-      transparent 75%
-    );
   }
 }
