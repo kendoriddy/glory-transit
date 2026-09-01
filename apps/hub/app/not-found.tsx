@@ -5,10 +5,8 @@ export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col pt-32 px-6">
       <div className="flex-1 max-w-content mx-auto">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-4">
-          404
-        </p>
-        <h1 className="font-display text-display-lg font-semibold text-ink">
+        <p className="eyebrow mb-4">404</p>
+        <h1 className="font-display text-display-lg text-ink">
           Page not found
         </h1>
         <p className="mt-4 text-muted text-lg max-w-md">
@@ -16,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="inline-block mt-8 text-sm font-medium text-accent hover:text-ink transition-colors"
+          className="link-arrow mt-8 inline-flex"
         >
           Return home →
         </Link>

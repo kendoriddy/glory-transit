@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { BRAND, SITE_URLS } from "@portfolio/config";
 import SiteHeader from "@/components/SiteHeader";
 import ScrollProgress from "@/components/ScrollProgress";
+import ColdBootLoader from "@/components/ColdBootLoader";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,11 +13,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const interTight = Inter_Tight({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter-tight",
+  variable: "--font-manrope",
   display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const title = `${BRAND.shortName} Onifade | Software Engineer · Cybersecurity · Founder`;
@@ -81,17 +83,20 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${interTight.variable} font-body overflow-x-hidden`}
+        className={`${inter.variable} ${manrope.variable} font-body overflow-x-hidden`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ScrollProgress />
-        <SiteHeader />
-        {children}
+        <ThemeProvider>
+          <ColdBootLoader />
+          <ScrollProgress />
+          <SiteHeader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

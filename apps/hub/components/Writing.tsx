@@ -9,9 +9,9 @@ export default function Writing() {
       label="Writing"
       title="Thinking in public"
       description="Technical articles on engineering, product, and security — published on Medium to share what I learn while building."
-      className="border-t border-line bg-gradient-to-br from-accent/[0.07] via-ink/[0.02] to-transparent"
+      className="border-t border-line"
     >
-      <div className="max-w-xl">
+      <div className="glass-card p-8 md:p-10 max-w-2xl">
         <p className="text-lg text-muted leading-relaxed">
           Writing forces clarity. I document architecture decisions, lessons
           from production incidents, and perspectives on building in the African

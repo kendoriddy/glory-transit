@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { DEFEND_SITE_URL, getBuildSiteUrl } from "@portfolio/config";
+import { getBuildSiteUrl } from "@portfolio/config";
 import Section from "@/components/Section";
 import { HIGHLIGHT_PROJECTS } from "@/lib/content";
 
@@ -14,68 +14,76 @@ export default function FeaturedProjects() {
 
   return (
     <Section
-      id="highlights"
-      label="Highlights"
-      title="Selected work"
+      id="work"
+      label="Selected projects"
+      title="Selected build experience."
       description="Flagship products — read the full case studies on Build for architecture, challenges, and outcomes."
       className="border-t border-line"
+      headerExtra={
+        <Link href="#contact" className="link-arrow shrink-0">
+          Request project details →
+        </Link>
+      }
     >
-      <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+      <ol className="divide-y divide-line border-y border-line">
         {HIGHLIGHT_PROJECTS.map((project, index) => (
           <motion.li
             key={project.slug}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: index * 0.08, ease }}
+            transition={{ duration: 0.5, delay: index * 0.06, ease }}
           >
             <Link
               href={`${buildUrl}/work/${project.slug}`}
-              className="group block h-full overflow-hidden border border-line bg-canvas/80 hover:border-accent/30 hover:shadow-lift transition-all duration-500 ease-smooth"
+              className="group grid md:grid-cols-[4rem_1fr_auto] gap-6 md:gap-10 py-10 md:py-12 items-start hover:bg-accent-soft/30 transition-colors px-2 -mx-2"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-ink/[0.03]">
+              <span className="font-display text-3xl md:text-4xl font-extrabold text-accent/60 group-hover:text-accent transition-colors tabular-nums">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <div className="min-w-0">
+                <p className="eyebrow text-[11px] mb-3">{project.context}</p>
+                <h3 className="font-display text-display-md text-ink group-hover:text-accent transition-colors">
+                  {project.name}
+                </h3>
+                <p className="mt-4 text-muted leading-relaxed max-w-2xl">
+                  {project.description}
+                </p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-muted border border-line"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="hidden md:block relative w-40 h-28 shrink-0 overflow-hidden border border-line gold-ring">
                 {project.image ? (
                   <Image
                     src={project.image}
                     alt=""
                     fill
-                    className="object-cover object-top transition-transform duration-700 ease-smooth group-hover:scale-[1.04]"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 24rem"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="10rem"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-ink/[0.04]" />
+                  <div className="absolute inset-0 bg-surface" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent opacity-80" />
-              </div>
-              <div className="px-6 py-5 md:px-7 md:py-6">
-                <p className="font-display text-lg font-medium text-ink group-hover:text-accent transition-colors duration-300">
-                  {project.name}
-                </p>
-                <p className="mt-1 text-sm text-muted">{project.context}</p>
-                <p className="mt-4 text-sm font-medium text-accent inline-flex items-center gap-1.5 transition-all duration-300 group-hover:translate-x-0.5">
-                  Case study →
-                </p>
               </div>
             </Link>
           </motion.li>
         ))}
-      </ul>
+      </ol>
 
-      <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-6 text-sm font-medium">
-        <Link
-          href={buildUrl}
-          className="text-accent hover:text-ink transition-colors link-underline w-fit"
-        >
-          All software projects → Build
+      <div className="mt-10">
+        <Link href={buildUrl} className="link-arrow">
+          View all software projects → Build
         </Link>
-        <a
-          href={DEFEND_SITE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent hover:text-ink transition-colors link-underline w-fit"
-        >
-          Cybersecurity work → Defend
-        </a>
       </div>
     </Section>
   );

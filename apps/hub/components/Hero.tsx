@@ -1,10 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { BRAND } from "@portfolio/config";
 import Button from "@/components/ui/Button";
-import AmbientOrbs from "@/components/AmbientOrbs";
+import { HERO_STATS, HIGHLIGHT_PROJECTS } from "@/lib/content";
+
+const SHOWCASE_INTERVAL_MS = 4500;
+const SHOWCASE_PROJECTS = HIGHLIGHT_PROJECTS.filter(
+  (
+    project,
+  ): project is (typeof HIGHLIGHT_PROJECTS)[number] & {
+    image: string;
+  } => Boolean(project.image),
+);
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -25,46 +35,30 @@ const item = {
   },
 };
 
-const showcase = [
-  {
-    src: "/projects/schoolorbit/hero.png",
-    className: "col-span-1 row-span-2",
-    delay: 0.25,
-  },
-  {
-    src: "/projects/plug-by-descasio/hero.png",
-    className: "col-span-1 row-span-1",
-    delay: 0.4,
-  },
-  {
-    src: "/projects/tailorflow/hero.png",
-    className: "col-span-1 row-span-1",
-    delay: 0.5,
-  },
-] as const;
-
 export default function Hero() {
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 px-6 min-h-[90vh] flex items-center overflow-hidden grain">
-      <AmbientOrbs />
-      <div className="mesh-grid absolute inset-0 opacity-80" aria-hidden />
+    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 px-6 min-h-[92vh] flex items-center overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
+        className="pointer-events-none absolute inset-0 hero-glow"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-border to-transparent"
         aria-hidden
       />
 
       <div className="max-w-content mx-auto w-full relative z-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         <motion.div variants={container} initial="hidden" animate="show">
-          <motion.p
-            variants={item}
-            className="text-xs font-medium uppercase tracking-[0.2em] text-muted mb-8"
-          >
-            {BRAND.fullName}
-          </motion.p>
+          <motion.div variants={item} className="flex items-center gap-4 mb-8">
+            <span className="h-px w-10 bg-accent-border" aria-hidden />
+            <p className="eyebrow">
+              Software Engineer · AI · Cybersecurity · Founder
+            </p>
+          </motion.div>
 
           <motion.h1
             variants={item}
-            className="font-display text-display-xl font-semibold text-ink text-balance"
+            className="font-display text-display-xl text-ink text-balance"
           >
             Building software that solves real-world problems.
           </motion.h1>
@@ -73,107 +67,136 @@ export default function Hero() {
             variants={item}
             className="mt-8 text-lg md:text-xl text-muted max-w-2xl leading-relaxed"
           >
-            I&apos;m Kenny — a software engineer, AI engineer, and cybersecurity
-            practitioner with over five years shipping production systems. I
-            build products, automate workflows, and design systems people can
-            trust.
+            I&apos;m {BRAND.shortName} — a software engineer, AI engineer, and
+            cybersecurity practitioner with over five years shipping production
+            systems. I build products, automate workflows, and design systems
+            people can trust.
           </motion.p>
 
-          <motion.div
-            variants={item}
-            className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/80"
-          >
-            <span>Software Engineer</span>
-            <span className="text-line-strong" aria-hidden>
-              ·
-            </span>
-            <span>Cybersecurity Practitioner</span>
-            <span className="text-line-strong" aria-hidden>
-              ·
-            </span>
-            <span>Founder</span>
-          </motion.div>
-
-          <motion.p
-            variants={item}
-            className="mt-8 text-sm text-muted max-w-xl leading-relaxed"
-          >
-            <span className="text-ink font-medium">Current focus:</span> Growing{" "}
-            <a
-              href="https://schoolorbit.ng"
-              className="text-accent underline-offset-4 hover:underline transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              SchoolOrbit
-            </a>{" "}
-            while deepening expertise in cybersecurity — SOC operations, GRC,
-            and secure architecture.
-          </motion.p>
-
-          <motion.div variants={item} className="mt-12 flex flex-wrap gap-4">
-            <Button href="#portfolios" variant="primary">
-              Explore portfolios
+          <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
+            <Button href="#contact" variant="primary">
+              Start a project
             </Button>
-            <Button href="#contact" variant="secondary">
-              Contact Me
+            <Button href="#work" variant="secondary">
+              View projects →
             </Button>
           </motion.div>
 
-          {/* Mobile / tablet preview strip */}
           <motion.div
             variants={item}
-            className="mt-14 grid grid-cols-3 gap-2 lg:hidden"
-            aria-hidden
+            className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-line pt-10"
           >
-            {showcase.map((shot) => (
-              <div
-                key={shot.src}
-                className="relative aspect-[4/3] overflow-hidden border border-line shadow-soft"
-              >
-                <Image
-                  src={shot.src}
-                  alt=""
-                  fill
-                  className="object-cover object-top"
-                  sizes="33vw"
-                />
+            {HERO_STATS.map((stat) => (
+              <div key={stat.label}>
+                <p className="font-display text-3xl md:text-4xl font-extrabold text-accent tracking-tight">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-sm text-muted leading-snug">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </motion.div>
         </motion.div>
 
-        <div
-          className="relative hidden lg:grid grid-cols-2 grid-rows-2 gap-3 h-[28rem]"
-          aria-hidden
+        <motion.div
+          className="relative hidden lg:block"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.2, ease }}
         >
-          {showcase.map((shot) => (
-            <motion.div
-              key={shot.src}
-              className={`relative overflow-hidden border border-line bg-ink/[0.03] shadow-soft ${shot.className}`}
-              initial={{ opacity: 0, y: 28, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, delay: shot.delay, ease }}
-              whileHover={{ y: -4 }}
-            >
-              <Image
-                src={shot.src}
-                alt=""
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 0px, 28rem"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent" />
-            </motion.div>
-          ))}
-          <motion.div
-            className="absolute -inset-6 -z-10 rounded-full bg-accent/[0.07] blur-3xl"
-            animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.75, 0.5] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          <div
+            className="absolute -inset-8 -z-10 rounded-full bg-accent/10 blur-3xl"
+            aria-hidden
           />
-        </div>
+          <HeroShowcase />
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function HeroShowcase() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const active = SHOWCASE_PROJECTS[index];
+
+  useEffect(() => {
+    if (reduceMotion || paused || SHOWCASE_PROJECTS.length < 2) return;
+    const id = window.setInterval(() => {
+      setIndex((current) => (current + 1) % SHOWCASE_PROJECTS.length);
+    }, SHOWCASE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [reduceMotion, paused, index]);
+
+  if (!active?.image) return null;
+
+  return (
+    <div
+      className="relative aspect-[4/5] overflow-hidden border border-accent-border gold-ring"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {SHOWCASE_PROJECTS.map((project, i) => (
+        <motion.div
+          key={project.slug}
+          initial={false}
+          animate={{ opacity: i === index ? 1 : 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.7, ease }}
+          aria-hidden={i !== index}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <Image
+            src={project.image}
+            alt={i === index ? `${project.name} — ${project.context}` : ""}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 1024px) 0px, 40vw"
+            priority={i === 0}
+          />
+        </motion.div>
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute bottom-5 left-5 right-5 z-10 glass-surface px-4 py-3 flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-accent">
+            Selected work
+          </p>
+          <p
+            key={active.slug}
+            className="mt-1 text-sm font-semibold text-ink truncate"
+            aria-live="polite"
+          >
+            {active.name}
+          </p>
+        </div>
+        <div
+          className="flex items-center shrink-0 -mr-1.5"
+          role="tablist"
+          aria-label="Selected projects"
+        >
+          {SHOWCASE_PROJECTS.map((project, i) => (
+            <button
+              key={project.slug}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Show ${project.name}`}
+              onClick={() => setIndex(i)}
+              className="group flex h-7 w-7 items-center justify-center"
+            >
+              <span
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-5 bg-accent"
+                    : "w-2 bg-ink/25 group-hover:bg-ink/45"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
