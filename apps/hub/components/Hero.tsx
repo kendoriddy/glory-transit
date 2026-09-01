@@ -1,10 +1,20 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { BRAND } from "@portfolio/config";
 import Button from "@/components/ui/Button";
-import { HERO_STATS } from "@/lib/content";
+import { HERO_STATS, HIGHLIGHT_PROJECTS } from "@/lib/content";
+
+const SHOWCASE_INTERVAL_MS = 4500;
+const SHOWCASE_PROJECTS = HIGHLIGHT_PROJECTS.filter(
+  (
+    project,
+  ): project is (typeof HIGHLIGHT_PROJECTS)[number] & {
+    image: string;
+  } => Boolean(project.image),
+);
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -28,7 +38,10 @@ const item = {
 export default function Hero() {
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 px-6 min-h-[92vh] flex items-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 hero-glow" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0 hero-glow"
+        aria-hidden
+      />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-border to-transparent"
         aria-hidden
@@ -78,7 +91,9 @@ export default function Hero() {
                 <p className="font-display text-3xl md:text-4xl font-extrabold text-accent tracking-tight">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-sm text-muted leading-snug">{stat.label}</p>
+                <p className="mt-2 text-sm text-muted leading-snug">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </motion.div>
@@ -90,29 +105,98 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.2, ease }}
         >
-          <div className="absolute -inset-8 -z-10 rounded-full bg-accent/10 blur-3xl" aria-hidden />
-          <div className="relative aspect-[4/5] overflow-hidden border border-accent-border gold-ring">
-            <Image
-              src="/projects/schoolorbit/hero.png"
-              alt="SchoolOrbit — flagship EdTech SaaS product"
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 0px, 40vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 glass-surface px-4 py-3 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-accent">
-                  Current focus
-                </p>
-                <p className="mt-1 text-sm font-semibold text-ink">SchoolOrbit · Founder</p>
-              </div>
-              <span className="h-2 w-2 rounded-full bg-accent shrink-0" aria-hidden />
-            </div>
-          </div>
+          <div
+            className="absolute -inset-8 -z-10 rounded-full bg-accent/10 blur-3xl"
+            aria-hidden
+          />
+          <HeroShowcase />
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function HeroShowcase() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const active = SHOWCASE_PROJECTS[index];
+
+  useEffect(() => {
+    if (reduceMotion || paused || SHOWCASE_PROJECTS.length < 2) return;
+    const id = window.setInterval(() => {
+      setIndex((current) => (current + 1) % SHOWCASE_PROJECTS.length);
+    }, SHOWCASE_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [reduceMotion, paused, index]);
+
+  if (!active?.image) return null;
+
+  return (
+    <div
+      className="relative aspect-[4/5] overflow-hidden border border-accent-border gold-ring"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {SHOWCASE_PROJECTS.map((project, i) => (
+        <motion.div
+          key={project.slug}
+          initial={false}
+          animate={{ opacity: i === index ? 1 : 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.7, ease }}
+          aria-hidden={i !== index}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <Image
+            src={project.image}
+            alt={i === index ? `${project.name} — ${project.context}` : ""}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 1024px) 0px, 40vw"
+            priority={i === 0}
+          />
+        </motion.div>
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute bottom-5 left-5 right-5 z-10 glass-surface px-4 py-3 flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-accent">
+            Selected work
+          </p>
+          <p
+            key={active.slug}
+            className="mt-1 text-sm font-semibold text-ink truncate"
+            aria-live="polite"
+          >
+            {active.name}
+          </p>
+        </div>
+        <div
+          className="flex items-center shrink-0 -mr-1.5"
+          role="tablist"
+          aria-label="Selected projects"
+        >
+          {SHOWCASE_PROJECTS.map((project, i) => (
+            <button
+              key={project.slug}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Show ${project.name}`}
+              onClick={() => setIndex(i)}
+              className="group flex h-7 w-7 items-center justify-center"
+            >
+              <span
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === index
+                    ? "w-5 bg-accent"
+                    : "w-2 bg-ink/25 group-hover:bg-ink/45"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

@@ -105,23 +105,13 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: "01",
     title: "Scope",
     summary: "Define goals, users, scope, and stack.",
-    items: [
-      "Define goals",
-      "Identify users",
-      "Set scope",
-      "Choose stack",
-    ],
+    items: ["Define goals", "Identify users", "Set scope", "Choose stack"],
   },
   {
     number: "02",
     title: "Design",
     summary: "Map pages, components, states, and mobile flow.",
-    items: [
-      "Map pages",
-      "Design components",
-      "Plan states",
-      "Mobile flow",
-    ],
+    items: ["Map pages", "Design components", "Plan states", "Mobile flow"],
   },
   {
     number: "03",
@@ -138,23 +128,13 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: "04",
     title: "Test",
     summary: "Test screens, speed, security, and friction points.",
-    items: [
-      "Test screens",
-      "Review speed",
-      "Check security",
-      "Fix friction",
-    ],
+    items: ["Test screens", "Review speed", "Check security", "Fix friction"],
   },
   {
     number: "05",
     title: "Ship",
     summary: "Deploy, handoff, track issues, and improve next.",
-    items: [
-      "Deploy",
-      "Handoff",
-      "Track issues",
-      "Improve next",
-    ],
+    items: ["Deploy", "Handoff", "Track issues", "Improve next"],
   },
 ];
 
@@ -193,15 +173,6 @@ export const ABOUT_STATS = [
 
 export const HIGHLIGHT_PROJECTS: HighlightProject[] = [
   {
-    name: "SchoolOrbit",
-    context: "SaaS · EdTech · Founder",
-    description:
-      "School management platform for attendance, academics, fees, and staff operations — founded and built to give teachers time back and administrators one place to run their school.",
-    tags: ["Next.js", "SaaS", "EdTech", "Founder"],
-    slug: "schoolorbit",
-    image: "/projects/schoolorbit/hero.png",
-  },
-  {
     name: "Plug by Descasio",
     context: "Enterprise SaaS",
     description:
@@ -218,6 +189,15 @@ export const HIGHLIGHT_PROJECTS: HighlightProject[] = [
     tags: ["Flutter", "Mobile", "Vertical SaaS"],
     slug: "tailorflow",
     image: "/projects/tailorflow/hero.png",
+  },
+  {
+    name: "SchoolOrbit",
+    context: "SaaS · EdTech · Founder",
+    description:
+      "School management platform for attendance, academics, fees, and staff operations — founded and built to give teachers time back and administrators one place to run their school.",
+    tags: ["Next.js", "SaaS", "EdTech", "Founder"],
+    slug: "schoolorbit",
+    image: "/projects/schoolorbit/hero.png",
   },
 ];
 
