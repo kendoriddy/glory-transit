@@ -1,20 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BRAND } from "@portfolio/config";
 import Button from "@/components/ui/Button";
-import { HERO_STATS, HIGHLIGHT_PROJECTS } from "@/lib/content";
-
-const SHOWCASE_INTERVAL_MS = 4500;
-const SHOWCASE_PROJECTS = HIGHLIGHT_PROJECTS.filter(
-  (
-    project,
-  ): project is (typeof HIGHLIGHT_PROJECTS)[number] & {
-    image: string;
-  } => Boolean(project.image),
-);
+import { HERO_STATS } from "@/lib/content";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -47,8 +36,13 @@ export default function Hero() {
         aria-hidden
       />
 
-      <div className="max-w-content mx-auto w-full relative z-10 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
-        <motion.div variants={container} initial="hidden" animate="show">
+      <div className="max-w-content mx-auto w-full relative z-10">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="max-w-3xl"
+        >
           <motion.div variants={item} className="flex items-center gap-4 mb-8">
             <span className="h-px w-10 bg-accent-border" aria-hidden />
             <p className="eyebrow">
@@ -77,7 +71,7 @@ export default function Hero() {
             <Button href="#contact" variant="primary">
               Start a project
             </Button>
-            <Button href="#work" variant="secondary">
+            <Button href="/work" variant="secondary">
               View projects →
             </Button>
           </motion.div>
@@ -99,6 +93,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* Project image showcase — restore when ready
         <motion.div
           className="relative hidden lg:block"
           initial={{ opacity: 0, y: 28 }}
@@ -111,92 +106,8 @@ export default function Hero() {
           />
           <HeroShowcase />
         </motion.div>
+        */}
       </div>
     </section>
-  );
-}
-
-function HeroShowcase() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const reduceMotion = useReducedMotion();
-  const active = SHOWCASE_PROJECTS[index];
-
-  useEffect(() => {
-    if (reduceMotion || paused || SHOWCASE_PROJECTS.length < 2) return;
-    const id = window.setInterval(() => {
-      setIndex((current) => (current + 1) % SHOWCASE_PROJECTS.length);
-    }, SHOWCASE_INTERVAL_MS);
-    return () => window.clearInterval(id);
-  }, [reduceMotion, paused, index]);
-
-  if (!active?.image) return null;
-
-  return (
-    <div
-      className="relative aspect-[4/5] overflow-hidden border border-accent-border gold-ring"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {SHOWCASE_PROJECTS.map((project, i) => (
-        <motion.div
-          key={project.slug}
-          initial={false}
-          animate={{ opacity: i === index ? 1 : 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.7, ease }}
-          aria-hidden={i !== index}
-          className="absolute inset-0 pointer-events-none"
-        >
-          <Image
-            src={project.image}
-            alt={i === index ? `${project.name} — ${project.context}` : ""}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 1024px) 0px, 40vw"
-            priority={i === 0}
-          />
-        </motion.div>
-      ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute bottom-5 left-5 right-5 z-10 glass-surface px-4 py-3 flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-accent">
-            Selected work
-          </p>
-          <p
-            key={active.slug}
-            className="mt-1 text-sm font-semibold text-ink truncate"
-            aria-live="polite"
-          >
-            {active.name}
-          </p>
-        </div>
-        <div
-          className="flex items-center shrink-0 -mr-1.5"
-          role="tablist"
-          aria-label="Selected projects"
-        >
-          {SHOWCASE_PROJECTS.map((project, i) => (
-            <button
-              key={project.slug}
-              type="button"
-              role="tab"
-              aria-selected={i === index}
-              aria-label={`Show ${project.name}`}
-              onClick={() => setIndex(i)}
-              className="group flex h-7 w-7 items-center justify-center"
-            >
-              <span
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === index
-                    ? "w-5 bg-accent"
-                    : "w-2 bg-ink/25 group-hover:bg-ink/45"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
