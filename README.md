@@ -18,7 +18,7 @@ npm run dev:build    # build only
 npm run dev:defend   # defend only
 ```
 
-Copy `.env.example` to `apps/hub/.env.local`, `apps/build/.env.local`, and `apps/defend/.env.local`. Chatbot UI is mounted on all three apps (bottom-left). Defend `/api/chat` also needs `ENABLE_DEFEND_CHAT=true` (or an AI key with the flag unset).
+Copy `.env.example` to `apps/hub/.env.local`, `apps/build/.env.local`, and `apps/defend/.env.local`. Chatbot UI is mounted on all three apps (bottom-right). Defend `/api/chat` also needs `ENABLE_DEFEND_CHAT=true` (or an AI key with the flag unset).
 
 ## Build
 

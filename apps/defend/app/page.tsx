@@ -83,7 +83,7 @@ export default function DefendHome() {
               >
                 cyber.kennyonifade.com
               </a>
-              . Ask the chatbot (bottom-left) about cybersecurity work on this
+              . Ask the chatbot (bottom-right) about cybersecurity work on this
               site once AI keys are configured.
             </p>
           </motion.div>

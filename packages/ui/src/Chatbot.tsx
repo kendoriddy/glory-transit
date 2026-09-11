@@ -89,7 +89,7 @@ export default function Chatbot({ site }: { site: PortfolioSite }) {
   return (
     <>
       <motion.button
-        className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full glass border border-accent-blue/30 flex items-center justify-center glow-blue hover:border-accent-blue transition-all"
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full glass border border-accent-blue/30 flex items-center justify-center glow-blue hover:border-accent-blue transition-all"
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -142,7 +142,7 @@ export default function Chatbot({ site }: { site: PortfolioSite }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-20 left-4 right-4 md:bottom-24 md:left-8 md:right-auto z-40 w-auto md:w-96 h-[70vh] md:h-[600px] max-h-[600px] glass rounded-lg border border-white/10 flex flex-col shadow-2xl"
+            className="fixed bottom-20 right-4 left-4 md:bottom-24 md:right-8 md:left-auto z-40 w-auto md:w-96 h-[70vh] md:h-[600px] max-h-[600px] glass rounded-lg border border-white/10 flex flex-col shadow-2xl"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
