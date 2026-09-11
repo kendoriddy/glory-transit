@@ -102,7 +102,7 @@ Edit `lib/portfolio-knowledge.ts` with your actual information:
 
 ### Change Chatbot Appearance
 
-Edit `components/ui/Chatbot.tsx` to customize:
+Edit `packages/ui/src/Chatbot.tsx` to customize:
 - Colors and styling
 - Button position
 - Window size
@@ -117,10 +117,10 @@ Edit `components/ui/Chatbot.tsx` to customize:
 
 ### Example Customizations
 
-**Change button position** (in `Chatbot.tsx`):
+**Change button position** (in `packages/ui/src/Chatbot.tsx`):
 ```tsx
-// Change from bottom-right to bottom-left
-className="fixed bottom-8 left-8 z-50 ..."
+// Default is bottom-right; switch to bottom-left with left-* classes
+className="fixed bottom-8 right-8 z-50 ..."
 ```
 
 **Change welcome message**:

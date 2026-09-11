@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { BRAND, SITE_URLS } from "@portfolio/config";
 import SiteNav from "@/components/SiteNav";
+import SiteChatbot from "@/components/SiteChatbot";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,6 +48,7 @@ export default function RootLayout({
       >
         <SiteNav />
         {children}
+        <SiteChatbot />
       </body>
     </html>
   );

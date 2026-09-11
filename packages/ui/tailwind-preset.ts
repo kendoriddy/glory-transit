@@ -14,6 +14,9 @@ const preset: Partial<Config> = {
         accent: "var(--color-accent, #b08d57)",
         "accent-soft": "var(--color-accent-soft, rgba(176,141,87,0.13))",
         "accent-border": "var(--color-accent-border, rgba(176,141,87,0.38))",
+        "accent-blue": "var(--color-accent, #b08d57)",
+        "accent-purple": "var(--color-accent, #b08d57)",
+        "accent-green": "var(--color-accent, #b08d57)",
         line: "var(--color-border, rgba(255,255,255,0.08))",
         "line-strong": "var(--color-border-strong, rgba(255,255,255,0.14))",
         dark: {
