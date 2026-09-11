@@ -46,7 +46,7 @@ Edit `lib/portfolio-knowledge.ts` with your actual information:
    ```
 
 2. Open your portfolio in the browser
-3. Click the floating chatbot button (bottom-right)
+3. Click the floating chatbot button (bottom-left)
 4. Ask questions like:
    - "What skills do you have?"
    - "Tell me about your projects"
@@ -102,7 +102,7 @@ Edit `lib/portfolio-knowledge.ts` with your actual information:
 
 ### Change Chatbot Appearance
 
-Edit `components/ui/Chatbot.tsx` to customize:
+Edit `packages/ui/src/Chatbot.tsx` to customize:
 - Colors and styling
 - Button position
 - Window size
@@ -117,9 +117,9 @@ Edit `components/ui/Chatbot.tsx` to customize:
 
 ### Example Customizations
 
-**Change button position** (in `Chatbot.tsx`):
+**Change button position** (in `packages/ui/src/Chatbot.tsx`):
 ```tsx
-// Change from bottom-right to bottom-left
+// Default is bottom-left; switch to bottom-right with right-* classes
 className="fixed bottom-8 left-8 z-50 ..."
 ```
 

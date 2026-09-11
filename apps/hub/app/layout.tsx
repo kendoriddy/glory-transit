@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import ScrollProgress from "@/components/ScrollProgress";
 import ColdBootLoader from "@/components/ColdBootLoader";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import SiteChatbot from "@/components/SiteChatbot";
 import "./globals.css";
 
 const inter = Inter({
@@ -96,6 +97,7 @@ export default function RootLayout({
           <ScrollProgress />
           <SiteHeader />
           {children}
+          <SiteChatbot />
         </ThemeProvider>
       </body>
     </html>

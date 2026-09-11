@@ -83,11 +83,8 @@ export default function DefendHome() {
               >
                 cyber.kennyonifade.com
               </a>
-              . Chatbot support will be enabled after migration (
-              <code className="text-accent-green text-xs">
-                ENABLE_DEFEND_CHAT=true
-              </code>
-              ).
+              . Ask the chatbot (bottom-left) about Kenny's cybersecurity work
+              once AI keys are configured.
             </p>
           </motion.div>
         </div>

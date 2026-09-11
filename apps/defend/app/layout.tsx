@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SITE_URLS } from "@portfolio/config";
+import SiteChatbot from "@/components/SiteChatbot";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,6 +39,7 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body antialiased bg-dark-primary text-white overflow-x-hidden`}
       >
         {children}
+        <SiteChatbot />
       </body>
     </html>
   );

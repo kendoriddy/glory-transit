@@ -18,7 +18,7 @@ npm run dev:build    # build only
 npm run dev:defend   # defend only
 ```
 
-Copy `.env.example` to `apps/hub/.env.local` and `apps/build/.env.local`.
+Copy `.env.example` to `apps/hub/.env.local`, `apps/build/.env.local`, and `apps/defend/.env.local`. Chatbot UI is mounted on all three apps (bottom-left). Defend `/api/chat` also needs `ENABLE_DEFEND_CHAT=true` (or an AI key with the flag unset).
 
 ## Build
 
@@ -46,14 +46,14 @@ For each project:
 - **Install Command:** `npm install` (run from repository root; Vercel detects the monorepo)
 - **Build Command:** leave default or `cd ../.. && npx turbo run build --filter=<app-name>`
 
-Add environment variables from `.env.example` to hub and build projects.
+Add environment variables from `.env.example` to hub, build, and defend projects. Defend also needs `ENABLE_DEFEND_CHAT=true` (plus an AI key) for `/api/chat`.
 
 ## Migrating defend content
 
 1. Port pages from your cyber portfolio repo into `apps/defend`
 2. Update `packages/knowledge/src/defend.ts` with real certs, labs, and projects
 3. Point DNS `defend.kennyonifade.com` and redirect `cyber.kennyonifade.com` if desired
-4. Set `ENABLE_DEFEND_CHAT=true` on defend and add the Chatbot UI when ready
+4. Set `ENABLE_DEFEND_CHAT=true` (and AI keys) on the defend Vercel project so `/api/chat` accepts requests
 
 ## Hub portfolio content
 

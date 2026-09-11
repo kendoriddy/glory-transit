@@ -2,15 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { getChatResponse } from "@portfolio/knowledge";
 
 /**
- * Defend chat API — ready for when chatbot UI is enabled post-migration.
- * Set ENABLE_DEFEND_CHAT=true to allow requests (disabled by default in v1).
+ * Defend chat API.
+ * Enabled when ENABLE_DEFEND_CHAT=true, or when an AI key is configured
+ * (unless ENABLE_DEFEND_CHAT is explicitly "false"). Production can turn
+ * it on with ENABLE_DEFEND_CHAT=true + OPENAI_API_KEY / GEMINI_API_KEY.
  */
+function isDefendChatEnabled() {
+  const flag = process.env.ENABLE_DEFEND_CHAT;
+  if (flag === "false") return false;
+  if (flag === "true") return true;
+  return Boolean(process.env.OPENAI_API_KEY || process.env.GEMINI_API_KEY);
+}
+
 export async function POST(request: NextRequest) {
-  if (process.env.ENABLE_DEFEND_CHAT !== "true") {
+  if (!isDefendChatEnabled()) {
     return NextResponse.json(
       {
         error:
-          "Defend chatbot is not enabled yet. Visit kennyonifade.com to ask general questions.",
+          "Defend chatbot is disabled. Set ENABLE_DEFEND_CHAT=true and an AI API key, or visit kennyonifade.com.",
       },
       { status: 503 },
     );
