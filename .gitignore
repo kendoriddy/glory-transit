@@ -35,6 +35,7 @@ next-env.d.ts
 # turbo
 .turbo
 
-# markdown (allow README)
+# markdown (allow README and human QA checklist)
 *.md
 !README.md
+!HUMAN_TEST.md
