@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -17,6 +18,14 @@ const config: Config = {
         accent: "var(--color-accent)",
         "accent-soft": "var(--color-accent-soft)",
         "accent-border": "var(--color-accent-border)",
+        "accent-blue": "var(--color-accent)",
+        "accent-purple": "var(--color-accent)",
+        "accent-green": "var(--color-accent)",
+        dark: {
+          primary: "var(--color-bg)",
+          secondary: "var(--color-surface)",
+          tertiary: "var(--color-surface-elevated)",
+        },
         line: "var(--color-border)",
         "line-strong": "var(--color-border-strong)",
       },
